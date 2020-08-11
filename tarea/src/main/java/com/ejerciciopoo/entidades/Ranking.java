@@ -3,6 +3,8 @@ package com.ejerciciopoo.entidades;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -11,10 +13,32 @@ public class Ranking {
 	@GeneratedValue
 	private int id;
 	private Integer ranking;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name="id",referencedColumnName="id")
 	private Persona persona;
-	@OneToMany
+	@ManyToOne
+	@JoinColumn(name="id",referencedColumnName="id")
 	private Skill skill;
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
+	}
+
 
 	public Ranking() {
 	}

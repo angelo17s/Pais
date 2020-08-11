@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Skill {
@@ -14,8 +15,9 @@ public class Skill {
 	private int id;
 	private String habilidad;
 	
-	@ManyToOne
-	private ArrayList< Ranking> ranking;
+
+	@OneToMany(targetEntity = Ranking.class)
+	private ArrayList<Ranking> ranking;
 	
 	
 	public Skill() {
