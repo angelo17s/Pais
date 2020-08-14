@@ -1,5 +1,9 @@
 package com.ejerciciopoo.main;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -19,7 +23,7 @@ public class Main {
 	
 	static SessionFactory sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
 	
-	
+	private static EntityManagerFactory emf= Persistence.createEntityManagerFactory("Persistencia");
 
 	public static void main(String[] args) {
 		Pais pais= new Pais("Turquia");
@@ -49,6 +53,12 @@ public class Main {
 		session.getTransaction().commit();
 		session.close();
 
+	}
+	
+	static void imprimirDatos() {
+		EntityManager em= emf.createEntityManager();
+		Pais pais=em.find(Pais.class, 1);
+		
 	}
 	
 	
